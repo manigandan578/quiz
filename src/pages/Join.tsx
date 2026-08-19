@@ -72,11 +72,18 @@ export default function Join() {
     const cleanPin = pinCode.replace(/\s/g, '');
 
     // Fetch session with max_participants so we can check capacity
-    const { data: session } = await supabase
+    const { data: session, error: sessionError } = await supabase
       .from('quiz_sessions')
       .select('id, max_participants')
       .eq('pin_code', cleanPin)
       .single();
+
+    if (sessionError) {
+      console.error('Failed to load quiz session:', sessionError);
+      toast.error('Unable to load the quiz session. Please check your database setup.');
+      setIsLoading(false);
+      return;
+    }
 
     if (!session) {
       toast.error('Session not found');

@@ -90,11 +90,7 @@ export default function Host() {
   const getJoinUrl = () => {
     if (!session) return '';
     const baseUrl = window.location.origin;
-    // Use /join with PIN for waiting state, /play for active state
-    if (session.status === 'waiting') {
-      return `${baseUrl}/join?pin=${session.pin_code}`;
-    }
-    return `${baseUrl}/play/${session.id}`;
+    return `${baseUrl}/join?pin=${session.pin_code}`;
   };
 
   useEffect(() => {
