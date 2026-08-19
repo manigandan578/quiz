@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Infogram Quiz App - Playful Orange & Yellow Theme */
+
+@layer base {
+  :root {
+    /* Background: Light gray/blue tint for freshness */
+    --background: 210 20% 98%;
+    --foreground: 260 20% 15%;
+
+    /* Card: White with strong pop */
+    --card: 0 0% 100%;
+    --card-foreground: 260 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 20% 15%;
+
+    /* Primary: Bright Purple (#8854d0) */
+    --primary: 265 59% 57%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Deep Indigo/Blue for variety */
+    --secondary: 250 50% 90%;
+    --secondary-foreground: 265 59% 47%;
+
+    /* Muted */
+    --muted: 210 20% 90%;
+    --muted-foreground: 260 10% 50%;
+
+    /* Accent: Action Blue (#2d98da) */
+    --accent: 203 69% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive: Bright Red (#eb3b5a) */
+    --destructive: 350 81% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 265 59% 57%;
+
+    --radius: 1.5rem;
+
+    /* Success: Vibrant Green (#26de81) */
+    --success: 150 72% 51%;
+    --success-foreground: 0 0% 100%;
+
+    /* Quiz Specifics */
+    --quiz-correct: 150 72% 51%;
+    --quiz-wrong: 350 81% 58%;
+    --quiz-timer: 40 91% 58%;
+    --quiz-highlight: 203 69% 51%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 260 20% 25%;
+    --sidebar-primary: 265 59% 57%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 50% 90%;
+    --sidebar-accent-foreground: 265 59% 47%;
+    --sidebar-border: 210 20% 90%;
+    --sidebar-ring: 265 59% 57%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(265 59% 57%) 0%, hsl(265 60% 50%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(250 20% 95%) 100%);
+    --gradient-card: linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 30px hsla(265, 59%, 57%, 0.4);
+    --shadow-glow-secondary: 0 0 30px hsla(150, 72%, 51%, 0.4);
+  }
+
+  .dark {
+    --background: 260 20% 10%;
+    --foreground: 210 20% 98%;
+
+    --card: 260 20% 14%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 260 20% 14%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 265 59% 57%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 20% 20%;
+    --secondary-foreground: 265 59% 67%;
+
+    --muted: 260 20% 20%;
+    --muted-foreground: 260 10% 60%;
+
+    --accent: 203 69% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 350 81% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 260 20% 25%;
+    --input: 260 20% 25%;
+    --ring: 265 59% 57%;
+
+    --success: 150 72% 51%;
+    --success-foreground: 0 0% 100%;
+
+    --quiz-correct: 150 72% 51%;
+    --quiz-wrong: 350 81% 58%;
+    --quiz-timer: 40 91% 58%;
+    --quiz-highlight: 203 69% 51%;
+
+    --sidebar-background: 260 20% 12%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 265 59% 57%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 260 20% 20%;
+    --sidebar-accent-foreground: 265 59% 67%;
+    --sidebar-border: 260 20% 20%;
+    --sidebar-ring: 265 59% 57%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(265 59% 57%) 0%, hsl(265 60% 50%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(260 20% 10%) 0%, hsl(260 20% 14%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(260 20% 14%) 0%, hsl(260 20% 12%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-glow-secondary {
+    box-shadow: var(--shadow-glow-secondary);
+  }
+
+  /* Fun button hover effect */
+  .btn-bounce {
+    @apply transition-all duration-200;
+  }
+
+  .btn-bounce:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  .btn-bounce:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Quiz card with playful hover */
+  .quiz-card {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .quiz-card:hover {
+    transform: translateY(-4px) rotate(0.5deg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Answer option styling */
+  .answer-option {
+    @apply relative overflow-hidden transition-all duration-200;
+  }
+
+  .answer-option::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-200;
+    background: var(--gradient-primary);
+  }
+
+  .answer-option:hover::before {
+    @apply opacity-10;
+  }
+
+  /* Timer urgency animation */
+  @keyframes timer-pulse {
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .timer-urgent {
+    animation: timer-pulse 0.5s ease-in-out infinite;
+  }
+
+  /* Confetti burst keyframes */
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(-100vh) rotate(0deg);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+
+  .confetti {
+    animation: confetti-fall 3s ease-in-out forwards;
+  }
+
+  /* Bounce in animation */
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0.3);
+      opacity: 0;
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+
+    70% {
+      transform: scale(0.9);
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-bounce-in {
+    animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  /* Slide up fade animation */
+  @keyframes slide-up-fade {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up-fade 0.4s ease-out forwards;
+  }
+
+  /* Wiggle animation for fun elements */
+  @keyframes wiggle {
+
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  .animate-wiggle {
+    animation: wiggle 0.3s ease-in-out;
+  }
+
+  /* Pulse glow for highlighting */
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 20px hsl(16 100% 60% / 0.3);
+    }
+
+    50% {
+      box-shadow: 0 0 40px hsl(16 100% 60% / 0.5);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Score pop animation */
+  @keyframes score-pop {
+    0% {
+      transform: scale(0) translateY(0);
+      opacity: 0;
+    }
+
+    50% {
+      transform: scale(1.3) translateY(-10px);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(1) translateY(-20px);
+      opacity: 0;
+    }
+  }
+
+  .animate-score-pop {
+    animation: score-pop 1s ease-out forwards;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Staggered animation delays */
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+
+  .stagger-5 {
+    animation-delay: 0.5s;
+  }
+}
