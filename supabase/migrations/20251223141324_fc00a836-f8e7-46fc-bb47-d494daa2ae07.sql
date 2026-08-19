@@ -87,6 +87,7 @@ CREATE TABLE public.quiz_sessions (
   status session_status NOT NULL DEFAULT 'waiting',
   current_question_index INTEGER DEFAULT 0,
   show_leaderboard BOOLEAN NOT NULL DEFAULT true,
+  max_participants INTEGER NOT NULL DEFAULT 200,
   started_at TIMESTAMPTZ,
   ended_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()

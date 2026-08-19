@@ -45,11 +45,18 @@ export default function Play() {
   }, [sessionId, participantId]);
 
   const checkSessionAndRedirect = async () => {
-    const { data: sessionData } = await supabase
+    const { data: sessionData, error: sessionError } = await supabase
       .from('quiz_sessions')
       .select('id, status, pin_code')
       .eq('id', sessionId)
       .single();
+
+    if (sessionError) {
+      console.error('Failed to load quiz session:', sessionError);
+      toast.error('Unable to load the quiz session. Please check your database setup.');
+      navigate('/join');
+      return;
+    }
 
     if (!sessionData) {
       toast.error('Session not found');
@@ -110,11 +117,18 @@ export default function Play() {
 
   const fetchData = async () => {
     // Fetch session
-    const { data: sessionData } = await supabase
+    const { data: sessionData, error: sessionError } = await supabase
       .from('quiz_sessions')
       .select('*')
       .eq('id', sessionId)
       .single();
+
+    if (sessionError) {
+      console.error('Failed to load quiz session:', sessionError);
+      toast.error('Unable to load the quiz session. Please check your database setup.');
+      setLoading(false);
+      return;
+    }
 
     if (!sessionData) {
       toast.error('Session not found');
